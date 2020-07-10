@@ -35,17 +35,26 @@ class UsersRepository {
     return crypto.randomBytes(4).toString('hex');
   }
 
+  async getOne(id) {
+    const records = await this.getAll();
+    return records.find(record => record.id === id);
+  }
 }
 
 const test = async () => {
   const repo = new UsersRepository('users.json');
+  /***
   let date = new Date(); let timestamp = date. getTime();
   await repo.create({
     'email': `test_${timestamp}@test.com`,
     'password': `password${timestamp}`
   });
   const users = await repo.getAll();
-  console.log(users);
+  ***/
+  const user = await repo.getOne('53a45fca');
+
+  //console.log(users);
+  console.log(user);
 }
 
 test();
