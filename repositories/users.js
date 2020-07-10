@@ -22,6 +22,10 @@ class UsersRepository {
   async create(attrs) {
     const records = await this.getAll();
     records.push(attrs);
+    await this.writeAll(records);
+  }
+
+  async writeAll(records) {
     await fs.promises.writeFile(this.filename, JSON.stringify(records));
   }
 
@@ -29,7 +33,11 @@ class UsersRepository {
 
 const test = async () => {
   const repo = new UsersRepository('users.json');
-  await repo.create({ 'email': 'test2@test.com', 'password': 'password2' });
+  let date = new Date(); let timestamp = date. getTime();
+  await repo.create({
+    'email': `test_${timestamp}@test.com`,
+    'password': `password${timestamp}`
+  });
   const users = await repo.getAll();
   console.log(users);
 }
