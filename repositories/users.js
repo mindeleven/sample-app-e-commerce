@@ -77,15 +77,16 @@ class UsersRepository {
   }
 }
 
+module.exports = new UsersRepository('users.json');
+
+/***
 const test = async () => {
   const repo = new UsersRepository('users.json');
   let date = new Date(); let timestamp = date. getTime();
-  /***
   await repo.create({
     'email': `test_${timestamp}@test.com`
     // 'password': `password${timestamp}`
   });
-  ***/
   //const users = await repo.getAll();
   //await repo.update('45dd8b98', { 'password': `password${timestamp}` });
   //const user = await repo.getOne('53a45fca');
@@ -102,3 +103,4 @@ const test = async () => {
 }
 
 test();
+***/
