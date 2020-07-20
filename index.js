@@ -1,14 +1,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cookieSession = require('cookie-session');
 const userRepo = require('./repositories/users');
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: 'true' }));
 
-app.get('/', (req, res) => {
+app.use(cookieSession({
+  keys: ['SFosFt6DakMksn3ng3II']
+}));
+
+app.get('/signup', (req, res) => {
   res.send(`
     <div>
+    Your id is: ${req.session.userId}
       <form method="POST">
         <input name="email" placeholder="email">
         <input name="password" placeholder="password">
@@ -19,7 +25,7 @@ app.get('/', (req, res) => {
   `);
 });
 
-app.post('/', async (req, res) => {
+app.post('/signup', async (req, res) => {
   const { email, password, passwordConfirmation } = req.body;
 
   const existingUser = await userRepo.getOneBy({ email });
@@ -32,10 +38,10 @@ app.post('/', async (req, res) => {
   }
 
   // create a user in our user repo
-  const user = await userRepo.create({ email. password });
+  const user = await userRepo.create({ email, password });
 
   // store the id of the user inside the user's cookie
-
+  req.session.userId = user.id;
 
   //console.log(req.body);
   res.send('Account created!!!');
