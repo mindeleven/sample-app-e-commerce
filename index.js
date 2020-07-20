@@ -31,6 +31,12 @@ app.post('/', async (req, res) => {
     return res.send('Passwords must match')
   }
 
+  // create a user in our user repo
+  const user = await userRepo.create({ email. password });
+
+  // store the id of the user inside the user's cookie
+
+
   //console.log(req.body);
   res.send('Account created!!!');
 });
