@@ -64,6 +64,24 @@ app.get('/signin', (req, res) => {
   `);
 });
 
+app.post('/signin', async (req, res) => {
+  const { email, password} = req.body;
+
+  const user = await userRepo.getOneBy({ email });
+
+  if (!user) {
+    return res.send('Email not found');
+  }
+
+  if (user.password !== password) {
+    return res.send('Invalid password');
+  }
+
+  req.session.userId = user.id;
+
+  res.send('You are signed in !!!');
+});
+
 app.listen(3000, () => {
   console.log('listening to port 3000...');
 });

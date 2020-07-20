@@ -1,10 +1,12 @@
 [
   {
-    "email": "test@test.com"
-  },
-  {
     "email": "myrandom@test.com",
     "password": "SmooFoo",
     "id": "c2e931f0"
+  },
+  {
+    "email": "test@test.com",
+    "password": "password",
+    "id": "02d102fd"
   }
 ]
