@@ -47,6 +47,23 @@ app.post('/signup', async (req, res) => {
   res.send('Account created!!!');
 });
 
+app.get('/signout', async (req, res) => {
+  req.session = null;
+  res.send('You are logged out');
+});
+
+app.get('/signin', (req, res) => {
+  res.send(`
+    <div>
+      <form method="POST">
+        <input name="email" placeholder="email">
+        <input name="password" placeholder="password">
+        <button>Sign In</button>
+      </form>
+    </div>
+  `);
+});
+
 app.listen(3000, () => {
   console.log('listening to port 3000...');
 });
