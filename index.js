@@ -16,5 +16,3 @@ app.use(authRouter);
 app.listen(3000, () => {
   console.log('listening to port 3000...');
 });
-
-model.exports = router;
