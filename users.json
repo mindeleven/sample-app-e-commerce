@@ -28,5 +28,10 @@
     "email": "foo@moo.com",
     "password": "b28a0771960eea3f04b5ce06e000a773720c44be02c2c61ab0267a3f0af64e4884a5f86a7f68398ef6280437b84b98151174c1f4d5dc7fc5d307cd2ba82199cf.e1c31ac265266f46",
     "id": "06cba731"
+  },
+  {
+    "email": "test@test.com",
+    "password": "3763ea9197bd87ca7011f4a707775df36e99a0092b7ae680122dab6ae3cd852f19a810ab53e80bb7f3173e1f426bdfb29677d99ff00017126de920a353b34f6b.88c170ea02fd6c60",
+    "id": "e2f70b7a"
   }
 ]
